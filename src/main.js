@@ -1,138 +1,47 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from "vue";
 
-// Vuesax Component Framework
-import Vuesax from 'vuesax'
-import 'material-icons/iconfont/material-icons.css' //Material Icons
-import 'vuesax/dist/vuesax.css'; // Vuesax
-import IconCrypto from "vue-cryptocurrency-icons"; //IconCrypto 
+import "normalize.css/normalize.css"; // a modern alternative to CSS resets
 
-Vue.use(IconCrypto)
+import Element from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
+import "./styles/element-variables.scss";
 
-Vue.use(Vuesax)
+// import enLang from 'element-ui/lib/locale/lang/en'// 如果使用中文语言包请默认支持，无需额外引入，请删除该依赖
 
+import "@/styles/index.scss"; // global css
 
-// axios
-import axios from "./axios.js"
+import App from "./App";
+import store from "./store";
+import router from "./router";
 
-Vue.prototype.$http = axios
+import "./icons"; // icon
+import "./permission"; // permission control
+import "./utils/error-log"; // error log
+import request from "@/utils/request";
+import * as filters from "./filters"; // global filters
+import catchAdmin from "@/components/Catch";
+import "@wangeditor/editor/dist/css/style.css";
 
-// API Calls
-import "./http/requests"
+Vue.use(Element, {
+  size: "small", // set element-ui default size
+  // locale: enLang // 如果使用中文，无需设置，请删除
+});
 
-// mock
-// import "./fake-db/index.js"
+// register global utility filters
+Object.keys(filters).forEach((key) => {
+  Vue.filter(key, filters[key]);
+});
 
-// Theme Configurations
-import '../themeConfig.js'
+// 后台启动
+catchAdmin.boot();
 
-
-// Firebase
-import '@/firebase/firebaseConfig'
-
-
-// Auth0 Plugin
-import AuthPlugin from "./plugins/auth";
-
-Vue.use(AuthPlugin);
-
-
-// ACL
-import acl from './acl/acl'
-
-
-// Globally Registered Components
-import './globalComponents.js'
-
-
-// Styles: SCSS
-import './assets/scss/main.scss'
-
-
-// Tailwind
-import '@/assets/css/main.css'
-
-
-// Vue Router
-import router from '@/router'
-
-
-// Vuex Store
-import store from './store/store'
-
-
-// i18n
-import i18n from './i18n/i18n'
-
-
-// Vuexy Admin Filters
-import './filters/filters'
-
-
-// Clipboard
-import VueClipboard from 'vue-clipboard2'
-
-Vue.use(VueClipboard);
-
-
-// Tour
-import VueTour from 'vue-tour'
-
-Vue.use(VueTour)
-require('vue-tour/dist/vue-tour.css')
-
-
-// VeeValidate
-import VeeValidate from 'vee-validate';
-
-Vue.use(VeeValidate);
-
-
-// Google Maps
-import * as VueGoogleMaps from 'vue2-google-maps'
-
-Vue.use(VueGoogleMaps, {
-    load: {
-        // Add your API key here
-        key: 'YOUR_API_KEY',
-        libraries: 'places', // This is required if you use the Auto complete plug-in
-    },
-})
-
-// Vuejs - Vue wrapper for hammerjs
-import {VueHammer} from 'vue2-hammer'
-
-Vue.use(VueHammer)
-
-
-// PrismJS
-import 'prismjs'
-import 'prismjs/themes/prism-tomorrow.css'
-
-
-// Feather font icon
-require('./assets/css/iconfont.css')
-
-
-// Vue select css
-// Note: In latest version you have to add it separately
-// import 'vue-select/dist/vue-select.css';
-
-if (process.env.NODE_ENV !== 'development') {
-    // eslint-disable-next-line no-console
-    console.log(
-        ` %c trading-admin  %c LastBuildTime: ${__APP_INFO__['build_time']},commit:${__APP_INFO__['commit']} `,
-        'color: #fadfa3; background: #030307; padding:5px 0;',
-        'background: #fadfa3; padding:5px 0;'
-    )
-}
-
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+Vue.prototype.$http = request;
+Vue.prototype.admin = catchAdmin;
 
 new Vue({
-    router,
-    store,
-    i18n,
-    acl,
-    render: h => h(App)
-}).$mount('#app')
+  el: "#app",
+  router,
+  store,
+  render: (h) => h(App),
+});

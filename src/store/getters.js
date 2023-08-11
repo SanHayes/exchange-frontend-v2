@@ -1,29 +1,17 @@
-/*=========================================================================================
-  File Name: getters.js
-  Description: Vuex Store - getters
-  ----------------------------------------------------------------------------------------
-  Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-  Author: Pixinvent
-  Author URL: http://www.themeforest.net/user/pixinvent
-==========================================================================================*/
-
-// added so later we can keep breakpoint in sync automatically using this config file
-// import tailwindConfig from "../../tailwind.config.js"
-
 const getters = {
-
-	// COMPONENT
-		// vx-autosuggest
-	// starredPages: state => state.navbarSearchAndPinList.data.filter((page) => page.highlightAction),
-  windowBreakPoint: state => {
-
-    // This should be same as tailwind. So, it stays in sync with tailwind utility classes
-    if (state.windowWidth >= 1200) return "xl"
-    else if (state.windowWidth >= 992) return "lg"
-    else if (state.windowWidth >= 768) return "md"
-    else if (state.windowWidth >= 576) return "sm"
-    else return "xs"
-  }
+  sidebar: state => state.app.sidebar,
+  size: state => state.app.size,
+  device: state => state.app.device,
+  visitedViews: state => state.tagsView.visitedViews,
+  cachedViews: state => state.tagsView.cachedViews,
+  token: state => state.user.token,
+  avatar: state => state.user.avatar,
+  name: state => state.user.name,
+  introduction: state => state.user.introduction,
+  roles: state => state.user.roles,
+  permission_routes: state => state.permission.routes,
+  errorLogs: state => state.errorLog.logs,
+  email: state => state.user.email,
+  user_id: state => state.user.id
 }
-
 export default getters
