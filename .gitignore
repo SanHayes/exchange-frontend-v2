@@ -6,6 +6,7 @@
 /vendor
 /fixer
 /catch
+/dist
 .env
 nohup.out
 .env.backup
