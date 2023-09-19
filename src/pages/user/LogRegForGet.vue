@@ -1319,7 +1319,7 @@ export default {
 
     submitFormResetPass() {
       let isActive = true;
-      if (this.emailReset === "" || !this.checkReg(this.emailReset)) {
+      if (this.emailReset === "") {
         this.msgEmReset = "Địa chỉ email không hợp lệ. Vui lòng thử lại.";
         return;
       } else {
@@ -1366,7 +1366,7 @@ export default {
               icon: "icon-check",
               color: "success",
             });
-            window.location.href = window.location.origin + "/login";
+            this.$router.push("/login");
           } else if (res.data.success == 2) {
             this.$vs.notify({
               text: "Mã 2FA không đúng",
@@ -1646,8 +1646,10 @@ export default {
         getData.num_secu = dt.num_secury;
         getData.country = dt.c;
         getData.so_cmnd = dt.so_cmnd;
-        getData.blLive = dt.order[1]?.balance;
-        getData.blDemo = (dt.order[0] || {})?.balance || 0;
+        if (dt.order && dt.order.length) {
+          getData.blLive = dt.order[1]?.balance;
+          getData.blDemo = (dt.order[0] || {})?.balance || 0;
+        }
         getData.balance = dt.balance;
 
         localStorage.setItem("INFO", JSON.stringify(dt));

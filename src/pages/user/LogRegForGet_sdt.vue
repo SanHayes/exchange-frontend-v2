@@ -1146,7 +1146,7 @@ export default {
     submitFormResetPass() {
       let isActive = true;
 
-      if (this.emailReset === "" || !this.checkReg(this.emailReset)) {
+      if (this.emailReset === "") {
         this.msgEmReset = "Địa chỉ email không hợp lệ. Vui lòng thử lại.";
         return;
       } else {
@@ -1195,7 +1195,7 @@ export default {
               icon: "icon-check",
               color: "success",
             });
-            window.location.href = window.location.origin + "/login";
+            this.$router.push("/login");
           } else if (res.data.success == 2) {
             this.$vs.notify({
               text: "Mã 2FA không đúng",
@@ -1272,7 +1272,7 @@ export default {
     },
 
     submitFormResendActive() {
-      debugger
+      debugger;
       let isActive = true;
 
       if (this.emailResend === "" || !this.checkReg(this.emailResend)) {
@@ -1290,7 +1290,7 @@ export default {
           email: this.emailResend,
         };
         AuthenticationService.resendConfirUser(obj).then((res) => {
-          console.log('res', res)
+          console.log("res", res);
           this.ldFrom = false;
           if (res.data.code === 10000) {
             this.hideTbResend = false;

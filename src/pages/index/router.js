@@ -7,7 +7,7 @@ import AuthenticationService from '@/services/AuthenticationService';
 Vue.use(Router);
 
 const router = new Router({
-  mode: 'history',
+  mode: 'hash',
   base: '/',
   scrollBehavior() {
     return { x: 0, y: 0 };

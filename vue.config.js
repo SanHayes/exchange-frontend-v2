@@ -16,37 +16,10 @@ process.env.VUE_APP_INFO = JSON.stringify(info);
  * @type {import('@vue/cli-service').ProjectOptions}
  */
 module.exports = {
-  pages: {
-    //前台
-    index: {
-      entry: 'src/pages/index/main.js',
-      template: 'public/client/index.html',
-      title: 'Home',
-      chunks: ['chunk-vendors', 'chunk-common', 'index']
-    },
-    //后台
-    portal: {
-      entry: 'src/main.js',
-      template: 'public/index.html',
-      title: 'Admin',
-      chunks: ['chunk-vendors', 'chunk-common', 'portal']
-    },
-    //不知道干嘛的
-    daily: {
-      entry: 'src/dai-ly/main.js',
-      template: 'public/client/dai-ly.html',
-      title: 'Đại lý',
-      chunks: ['chunk-vendors', 'chunk-common', 'daily']
-    },
-    //faq
-    faqs: {
-      entry: 'src/faqs/main.js',
-      template: 'public/client/faqs.html',
-      title: 'faqs',
-      chunks: ['chunk-vendors', 'chunk-common', 'faqs']
-    }
+  publicPath: './',
+  chainWebpack: (config) => {
+    config.entry('app').clear().add('./src/pages/index/main.js');
   },
-
   productionSourceMap: true,
 
   configureWebpack: {
@@ -62,7 +35,7 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'http://43.155.165.51/', // 需要代理的域名
+        target: 'https://www.ceshi01.vip',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''

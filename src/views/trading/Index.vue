@@ -3137,7 +3137,7 @@ export default {
             localStorage.removeItem("INFO");
             getData.Notify = 0;
             localStorage.removeItem("stateOpen");
-            window.location.href = window.location.origin + "/login";
+            this.$router.push('/login');
           }, 3000);
           const color = dl.style !== "danger" ? dl.style : "order_fail";
           return this.$vs.notify({
