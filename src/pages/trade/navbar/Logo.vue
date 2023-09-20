@@ -1,5 +1,10 @@
 <template>
-  <img width="210" height="61" alt="" :src="require('@/assets/images/logo/logo.png')">
+  <img
+    width="210"
+    height="61"
+    alt=""
+    :src="require('@/assets/images/logo/logo.png')"
+  />
 </template>
 
 <style scoped>

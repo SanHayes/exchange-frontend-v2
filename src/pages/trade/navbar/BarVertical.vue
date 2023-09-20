@@ -6,8 +6,6 @@
         :color="navbarColorLocal"
         :class="textColor"
       >
-        <!-- SM - OPEN SIDEBAR BUTTON -->
-        <!-- <feather-icon class="sm:inline-flex xl:hidden cursor-pointer p-2" icon="MenuIcon" @click.stop="showSidebar" /> -->
         <svg
           @click.stop="showSidebar"
           class="xl:hidden ml-5 cursor-pointer"
@@ -74,8 +72,6 @@ export default {
     },
   },
   components: {
-    //I18n,
-    //NotificationDropDown,
     Profile,
     Logo,
   },

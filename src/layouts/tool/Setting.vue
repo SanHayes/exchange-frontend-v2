@@ -319,7 +319,7 @@ export default {
 
     connectSever() {
       var _this = this;
-      this.connection = new WebSocket(config.BASE_URL_SOCKET_SYS);
+      this.connection = new WebSocket(config.BASE_URL_SOCKET);
       this.connection.onopen = function () {
         console.log(
           "Successfully connected to the echo websocket server systems..."

@@ -1320,7 +1320,7 @@ export default {
     submitFormResetPass() {
       let isActive = true;
       if (this.emailReset === "") {
-        this.msgEmReset = "Địa chỉ email không hợp lệ. Vui lòng thử lại.";
+        this.msgEmReset = this.$t("login.23");
         return;
       } else {
         isActive = true;
@@ -1328,7 +1328,7 @@ export default {
       }
 
       if (this.passwordReset.length < 6 || this.passwordReset.length > 20) {
-        this.msgPassReset = "Mật khẩu của bạn ít nhất phải 6 đến 20 ký tự.";
+        this.msgPassReset = this.$t("login.24");
         return;
       } else {
         isActive = true;
@@ -1336,7 +1336,7 @@ export default {
       }
 
       if (this.passwordReReset.length < 6 || this.passwordReReset.length > 20) {
-        this.msgPassReReset = "Mật khẩu của bạn ít nhất phải 6 đến 20 ký tự.";
+        this.msgPassReReset = this.$t("login.24");
         return;
       } else {
         isActive = true;
@@ -1381,7 +1381,7 @@ export default {
 
     submitFormReg() {
       if (this.emailReg === "" || !this.checkReg(this.emailReg)) {
-        this.msgEmReg = "Địa chỉ email không hợp lệ. Vui lòng thử lại.";
+        this.msgEmReg = this.$t("login.23");
         return;
       } else {
         this.msgEmReg = "";
@@ -1392,7 +1392,7 @@ export default {
         this.passwordReg.length < 6 ||
         this.passwordReg.length > 20
       ) {
-        this.msgPassReg = "Mật khẩu của bạn ít nhất phải 6 đến 20 ký tự.";
+        this.msgPassReg = this.$t("login.24");
         return;
       } else {
         this.msgPassReg = "";
@@ -1457,7 +1457,7 @@ export default {
     async submitForm3rd() {
       let isActive = true;
       if (this.email3rd === "" || !this.checkReg(this.email3rd)) {
-        this.msgEm3rd = "Địa chỉ email không hợp lệ. Vui lòng thử lại.";
+        this.msgEm3rd = this.$t("login.23");
         return;
       } else {
         this.msgEm3rd = "";
@@ -1468,7 +1468,7 @@ export default {
         this.password3rd.length < 6 ||
         this.password3rd.length > 20
       ) {
-        this.msgPass3rd = "Mật khẩu của bạn ít nhất phải 6 đến 20 ký tự.";
+        this.msgPass3rd = this.$t("login.24");
         return;
       } else {
         this.msgPass3rd = "";
@@ -1510,24 +1510,9 @@ export default {
         const res = await AuthenticationService.registerUser(obj);
         this.ldFrom = false;
         if (res.data.code == 10000) {
-          // this.isSubmitReg = true;
           setTimeout(() => {
             this.countDownResendMail();
           }, 500);
-        } else if (res.data.code == 1001) {
-          this.$vs.notify({
-            text: "Email này đã tồn tại",
-            iconPack: "feather",
-            icon: "icon-alert-circle",
-            color: "warning",
-          });
-        } else if (res.data.code == 1002) {
-          this.$vs.notify({
-            text: "Biệt danh này đã tồn tại",
-            iconPack: "feather",
-            icon: "icon-alert-circle",
-            color: "warning",
-          });
         }
 
         this.ldFrom = true;
@@ -1547,20 +1532,6 @@ export default {
           localStorage.setItem("tokenUser", g.token);
           this.activeLogin = false;
           this.getInfoLogin();
-        } else if (loginRes.data.success == 0) {
-          this.$vs.notify({
-            text: "Email hoặc mật khẩu không đúng. Vui lòng nhập lại",
-            iconPack: "feather",
-            icon: "icon-alert-circle",
-            color: "danger",
-          });
-        } else if (loginRes.data.success == 3) {
-          this.$vs.notify({
-            text: "Tài khoản chưa được kích hoạt!",
-            iconPack: "feather",
-            icon: "icon-alert-circle",
-            color: "danger",
-          });
         }
       }
     },
@@ -1568,7 +1539,7 @@ export default {
       let isActive = true;
 
       if (this.emailForgot === "" || !this.checkReg(this.emailForgot)) {
-        this.msgEmailForgot = "Địa chỉ email không hợp lệ. Vui lòng thử lại.";
+        this.msgEmailForgot = this.$t("login.23");
         isActive = false;
       } else {
         isActive = true;
@@ -1595,7 +1566,7 @@ export default {
       let isActive = true;
 
       if (this.emailResend === "" || !this.checkReg(this.emailResend)) {
-        this.msgEmailResend = "Địa chỉ email không hợp lệ. Vui lòng thử lại.";
+        this.msgEmailResend = this.$t("login.23");
         isActive = false;
       } else {
         this.msgEmailResend = "";
@@ -1690,17 +1661,10 @@ export default {
         token: this.saveToken,
       };
       AuthenticationService.loginGG2FA(obj).then((res) => {
-        if (res.data.success == 1) {
+        if (res.data.code == 10000) {
           localStorage.setItem("tokenUser", this.saveToken);
           this.activeLogin = false;
           this.getInfoLogin();
-        } else if (res.data.success == 6) {
-          return this.$vs.notify({
-            text: "Mã đăng nhập không hợp lệ hoặc đã hết hạn.",
-            iconPack: "feather",
-            icon: "icon-check",
-            color: "warning",
-          });
         }
       });
     },

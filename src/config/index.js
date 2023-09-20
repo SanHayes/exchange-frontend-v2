@@ -1,5 +1,4 @@
 export default {
-  // domain: process.env.VUE_APP_BASE_URL,
   domain: process.env.VUE_APP_BASE_URL_ADMIN,
   domainAdmin: process.env.VUE_APP_BASE_URL_ADMIN,
   domainRealName: process.env.VUE_APP_DOMAIN_REAL_NAME,

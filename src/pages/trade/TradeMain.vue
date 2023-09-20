@@ -143,7 +143,6 @@
           </div>
         </div>
       </div>
-      <!--<the-footer />-->
     </div>
   </div>
 </template>
@@ -163,12 +162,9 @@ const VxTour = () => import("@/components/VxTour.vue");
 
 export default {
   components: {
-    //LogRegForGet,
     BackToTop,
-    //TheFooter,
     HNavMenu,
     VNavMenu,
-    //TheCustomizer,
     TheNavbarHorizontal,
     TheNavbarVertical,
     VxTour,
@@ -340,8 +336,6 @@ export default {
           (getData.email = gData.email),
           (getData.profile_image = gData.profile_image),
           (getData.displayName = gData.nick_name),
-          (getData.uidLive = gData.order[1]?.u_id),
-          (getData.uidDemo = gData.order[0]?.u_id),
           (getData.vip = gData.vip),
           (getData.vip_lv = gData.level_vip),
           (getData.pen_commiss = gData.pending_commission),
@@ -354,9 +348,15 @@ export default {
           (getData.verify = gData.verify),
           (getData.num_secu = gData.num_secury),
           (getData.country = gData.c),
-          (getData.blLive = gData.order[1]?.balance ?? 0);
-        getData.blDemo = gData.order[0]?.balance ?? 0;
-        (getData.balance = gData.balance), (getData.mkt = gData.mkt);
+          (getData.balance = gData.balance),
+          (getData.mkt = gData.mkt);
+        if (gData.order && gData.order.length) {
+          getData.blLive = gData.order[1]?.balance ?? 0;
+          getData.blDemo = gData.order[0]?.balance ?? 0;
+          (getData.uidLive = gData.order[1]?.u_id)(
+            (getData.uidDemo = gData.order[0]?.u_id)
+          );
+        }
       }
     },
   },

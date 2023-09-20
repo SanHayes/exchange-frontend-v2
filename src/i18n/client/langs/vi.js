@@ -71,6 +71,8 @@ export default {
     19: 'Gửi lại email xác nhận',
     20: 'Vui lòng nhập địa chỉ email của bạn để gửi lại email xác nhận',
     21: 'Gửi lại',
-    22: 'Đã gửi email xác nhận'
+    22: 'Đã gửi email xác nhận',
+    23: 'Địa chỉ email không hợp lệ. Vui lòng thử lại.',
+    24: 'Mật khẩu của bạn ít nhất phải 6 đến 20 ký tự.'
   }
 };

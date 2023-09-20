@@ -107,14 +107,6 @@
               :options="chartOptionsStock"
             ></highcharts>
             <div class="title-wraps">
-              <!-- <div class="titleChartCandle items-center">
-                <span class="iconBTC"></span>
-                <span class="textPrice">USOIL</span>
-              </div>
-              <div class="titleChartCandle items-center">
-                <span class="iconBTC"></span>
-                <span class="textPrice">UKOIL</span>
-              </div> -->
               <div class="titleChartCandle items-center">
                 <span class="iconBTC"></span>
                 <span class="textPrice">BTC/USDT</span>
@@ -916,46 +908,6 @@
                 ></v-select>
               </div>
             </div>
-            <!--            <div class="vx-row m-0 mt-2 m_hide">
-              <div class="item-col md:w-4/12 w-full text-center mt-2">
-                <span class="w-full bpF cursor-pointer h-12" @click="clickCT(5)"
-                >+5</span
-                >
-              </div>
-              <div class="item-col md:w-4/12 w-full text-center mt-2">
-                <span
-                    class="w-full bpF cursor-pointer h-12"
-                    @click="clickCT(10)"
-                >+10</span
-                >
-              </div>
-              <div class="item-col md:w-4/12 w-full text-center mt-2">
-                <span
-                    class="w-full bpF cursor-pointer h-12"
-                    @click="clickCT(20)"
-                >+20</span
-                >
-              </div>
-              <div class="item-col md:w-4/12 w-full text-center mt-2">
-                <span
-                    class="w-full bpF cursor-pointer h-12"
-                    @click="clickCT(50)"
-                >+50</span
-                >
-              </div>
-              <div class="item-col md:w-4/12 w-full text-center mt-2">
-                <span
-                    class="w-full bpF cursor-pointer h-12"
-                    @click="clickCT(100)"
-                >+100</span
-                >
-              </div>
-              <div class="item-col md:w-4/12 w-full text-center mt-2">
-                <span class="w-full bpF cursor-pointer h-12" @click="clickCT(0)"
-                >All</span
-                >
-              </div>
-            </div>-->
           </div>
           <div class="lg:relative mb-5 no-margin-m">
             <div class="text-center">
@@ -1032,59 +984,7 @@
               >
             </div>
           </div>
-          <!--          <div class="relative">
-            <div class="flex">
-              <div class="flex w-full mr-2">
-                <div @click="truBetAmount" class="operator_mobile w-full">
-                  <svg
-                      viewBox="0 0 24 24"
-                      width="24"
-                      height="24"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="css-i6dzq1"
-                  >
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                  </svg>
-                </div>
-              </div>
-              <div class="flex relative" style="width: 55rem">
-                <vs-input
-                    readonly="readonly"
-                    @click.stop="showMobileMenu = !showMobileMenu"
-                    class="w-full betInput"
-                    icon-pack="feather"
-                    icon="icon-dollar-sign"
-                    placeholder="10"
-                    v-model="betAmount"
-                    icon-no-border
-                />
-              </div>
-              <div class="flex w-full ml-2">
-                <div @click="congBetAmount" class="operator_mobile w-full">
-                  <svg
-                      viewBox="0 0 24 24"
-                      width="24"
-                      height="24"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="css-i6dzq1"
-                  >
-                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>-->
           <div class="wrapper-cuoc-mobile">
-            <!--            <div class="relative">-->
             <v-select
               taggable
               :create-option="createOption"
@@ -1093,7 +993,6 @@
               v-model="selectedAmount"
               :options="amounts"
             ></v-select>
-            <!--            </div>-->
             <div class="session-mobile">
               <div>Phiên</div>
               <div>{{ session }}</div>
@@ -1314,9 +1213,6 @@ var UP_COLOR = "#2BB196",
 var progressBar = $(".e-c-progress");
 var lengthp = Math.PI * 2 * 100;
 progressBar.css("stroke-dasharray", lengthp);
-
-//circle ends
-//let wholeTime = 30; // manage this to set the whole time
 
 if (isMobile) {
   deviceVersion = "mobile";
@@ -2069,34 +1965,14 @@ export default {
           label: "20K",
           code: 20000,
         },
-        /*{
-          label: '50K',
-          code: 50000
-        },*/
         {
           label: "100K",
           code: 100000,
         },
-        /* {
-          label: '200K',
-          code: 200000
-        },
-        {
-          label: '500K',
-          code: 500000
-        },*/
         {
           label: "1M",
           code: 1000000,
         },
-        /*{
-          label: '2M',
-          code: 2000000
-        },
-        {
-          label: '3M',
-          code: 3000000
-        },*/
         {
           label: "5M",
           code: 5000000,
@@ -2109,10 +1985,7 @@ export default {
           label: "20M",
           code: 20000000,
         },
-        /*  {
-          label: '30M',
-          code: 30000000
-        },*/
+
         {
           label: "50M",
           code: 50000000,
@@ -2196,20 +2069,6 @@ export default {
 
       if (isTablet || isMobile) return isOpenSideBarStore;
       if (isOpenSideBarStore) {
-        if (tradeView) {
-          // tradeView.style.transform = `translateX(-230px)`;
-        }
-        if (cDesktop) {
-          // cDesktop.style.transform = `translateX(-230px)`;
-        }
-        if (historyBox) {
-          // historyBox.style.transform = `translateX(-230px)`;
-          /*    historyBox.style.width = "calc(100% - 230px)";
-          historyBox.style.setProperty('--width', (analysis.clientWidth - 230) / analysis.clientWidth);*/
-        }
-        if (gaugeMeter) {
-          // gaugeMeter.style.transform = `translateX(-128px)`;
-        }
       } else {
         if (tradeView) {
           tradeView.style.transform = `translateX(0px)`;
@@ -2218,7 +2077,6 @@ export default {
           cDesktop.style.transform = `translateX(0px)`;
         }
         if (historyBox) {
-          // historyBox.style.transform = `translateX(0px)`;
           historyBox.style.width = "100%";
           historyBox.style.setProperty("--width", 1);
         }
@@ -2413,18 +2271,6 @@ export default {
       getData.Notify = this.betOpen.l.bet[0].items.length;
 
       this.clearBAmount();
-
-      // if(v === 'buy'){
-
-      // }else{
-
-      //     return this.$vs.notify({
-      //         text:'Đặt lệnh thành công',
-      //         color:'success',
-      //         position:'top-right',
-      //         iconPack: 'feather',
-      //         icon:'icon-check'});
-      // }
     },
     // 输入框弹出键盘点击事件
     deleteString() {
@@ -2575,7 +2421,6 @@ export default {
     },
 
     editUser() {
-      //this.sidebarData = data
       this.toggleDataSidebar(true);
     },
 
@@ -2644,17 +2489,17 @@ export default {
           lastCandle.update(o, true);
         } else {
           chartInstance.series[0].addPoint(o, true, true);
-
-          // if(listData.length >= 200){
-          //     listData.shift();
-          // }
-          //console.log(boPrice);
           listData.push(boPrice);
           let begin = 0;
-          //console.log(listData);
           const { dataMax } = chartInstance.xAxis[0].getExtremes();
           begin = this.setSizeStock(listData);
-          chartGet.xAxis[0]?.setExtremes(listData[begin]?.date, dataMax, false);
+          if (listData.length) {
+            chartGet.xAxis[0]?.setExtremes(
+              listData[begin]?.date,
+              dataMax,
+              false
+            );
+          }
           chartGet.redraw();
         }
         chartInstance.xAxis[0].options.plotLines[0].value = boPrice.date;
@@ -2793,7 +2638,6 @@ export default {
       } catch {}
     },
 
-    // setSizeStock(){
     setSizeStock(data) {
       var chartWidth = parseInt($(".chartBox").width());
 
@@ -2802,15 +2646,6 @@ export default {
         return data.length - numBar;
       }
       return 10;
-
-      // var chartWidth = parseInt($('.chartBox').width());
-      // if (chartWidth < 400) {
-      //     return 65;
-      // }
-
-      // if (chartWidth > 400 && chartWidth < 800) {
-      //     return 95;
-      // }
     },
 
     getDataDefaultGet(get) {
@@ -2818,24 +2653,6 @@ export default {
       (ohlcStock = []), (volumeStock = []);
 
       var begin = 0;
-
-      // if (deviceVersion !== "pc") {
-      //   begin = this.setSizeStock(data);
-      // } else {
-      //   let getWidth = parseInt($("body").width());
-      //   if (getWidth >= 1260 && getWidth <= 1500) {
-      //     begin = 65;
-      //   }
-      //   if (getWidth >= 1500 && getWidth <= 1600) {
-      //     begin = 45;
-      //   }
-      //   if (getWidth >= 820 && getWidth <= 1260) {
-      //     begin = 75;
-      //   }
-      //   if (getWidth > 1500) {
-      //     begin = 55;
-      //   }
-      // }
 
       for (var i = begin; i < data.length; i++) {
         var _o = {
@@ -2863,7 +2680,9 @@ export default {
           clearInterval(ao);
           const { dataMax } = chartGet.xAxis[0].getExtremes(); //dataMin
           begin = this.setSizeStock(listData);
-          chartGet.xAxis[0]?.setExtremes(data[begin]["date"], dataMax, false);
+          if (data[begin]) {
+            chartGet.xAxis[0]?.setExtremes(data[begin]["date"], dataMax, false);
+          }
           chartGet.redraw();
         }
       }, 100);
@@ -2973,17 +2792,6 @@ export default {
       let checkSound = localStorage.getItem("SOUND");
       if (checkSound === "false") return;
       createjs.Sound.play(v);
-
-      // let sound;
-      // if(v == 'win'){
-      //    // sound = require('@/assets/sounds/win-n.mp3');
-      // }else if(v == 'lose'){
-      //   //  sound = require('@/assets/sounds/lose-n.mp3');
-      // }else if(v == 'order'){
-      //    // sound = require('@/assets/sounds/order-n.mp3');
-      // }
-      // var audio = new Audio(sound);
-      // audio.play();
     },
 
     getUserInfo() {
@@ -3025,8 +2833,6 @@ export default {
   },
   created() {
     const getData = this.blObj;
-    //let token = localStorage.getItem('token')
-    //this.$store.dispatch('setToken', token)
     let streak = JSON.parse(localStorage.getItem("streak") || "{}");
     this.streak = streak.count || 0;
     let acc = localStorage.getItem("BO_BALANCE_TYPE");
@@ -3036,13 +2842,11 @@ export default {
       getData.isAccount = 0;
     }
 
-    // lấy tổng số dư của tài khoản
     this.balanceForuser = getData.isAccount ? getData.blLive : getData.blDemo;
     this.$store.dispatch("setCurrentBalance", this.balanceForuser);
     this.connection = new ReconnectingWebSocket(config.BASE_URL_SOCKET);
 
     this.connection.onopen = function () {
-      // console.log("Successfully connected to the echo websocket server...")
       this.onWindowLoad();
       this.getUserInfo();
     }.bind(this);
@@ -3082,7 +2886,6 @@ export default {
         });
       }
       if (data.type === "kq") {
-        //console.log(dl);
         if (getData.isAccount) {
           this.setStreak(dl);
         }
@@ -3105,7 +2908,6 @@ export default {
         } else {
           this.playAudio("lose");
         }
-        // xóa notice = 0
         getData.Notify = 0;
         this.betOpen.l.bet[0].items = [];
         localStorage.removeItem("stateOpen");
@@ -3137,7 +2939,7 @@ export default {
             localStorage.removeItem("INFO");
             getData.Notify = 0;
             localStorage.removeItem("stateOpen");
-            this.$router.push('/login');
+            this.$router.push("/login");
           }, 3000);
           const color = dl.style !== "danger" ? dl.style : "order_fail";
           return this.$vs.notify({
@@ -3156,24 +2958,16 @@ export default {
       if (data.type === "static") {
         let indicato = data.load;
 
-        this.StaOscillators(indicato.Oscillators);
-        this.StaSummary(indicato.Summary);
-        this.StaMovingAverages(indicato.Moving);
-
-        //this.totalBuyStatic = dl.cbuy;
-        //this.totalSellStatic = dl.csell;
+        this.StaOscillators(indicato?.Oscillators);
+        this.StaSummary(indicato?.Summary);
+        this.StaMovingAverages(indicato?.Moving);
 
         let sta = dl.static;
 
-        let stl = sta.length;
+        let stl = sta?.length;
         let istart = 0;
-        let csl = 40;
         this.totalBuyStatic = this.totalSellStatic = 0;
-        //if(isMobile){ // rs lại tổng số
-        //    this.totalBuyStatic = this.totalSellStatic = 0;
-        //}
         if (isMobile && stl > 60) {
-          //let sl = stl - csl;
           let sl = 0;
           if (stl > 60 && stl <= 80) {
             sl = 20;
@@ -3183,17 +2977,12 @@ export default {
           for (let x = 0; x < sl; x++) {
             sta.shift();
           }
-          stl = sta.length;
+          stl = sta?.length;
         }
         let list = $(".historyBox");
         $(".historyBox .item").removeClass("bg-green bg-red");
         for (let i = istart; i < stl; i++) {
           let item = i;
-          // let l1 = $('.historyBox .list1')
-          // let l2 = $('.historyBox .list2')
-          // let l3 = $('.historyBox .list3')
-          // let l4 = $('.historyBox .list4')
-          // let l5 = $('.historyBox .list5')
           if (i < 20) {
             if (sta[i] == "buy") {
               list.find(".item:eq(" + item + ")").addClass("bg-green");
