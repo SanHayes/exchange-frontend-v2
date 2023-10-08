@@ -4,98 +4,6 @@
     v-scroll-lock="$store.state.isScrollTrading"
     class="trade-container relative"
   >
-    <div class="streak" v-if="false">
-      <span class="streak-title">streak</span>
-      <div class="ep-container" style="width: 32px; height: 32px">
-        <div class="ep-content">
-          <div class="ep-svg-container">
-            <svg
-              height="32"
-              width="32"
-              xmlns="http://www.w3.org/2000/svg"
-              class="ep-svg"
-            >
-              <g class="ep-circle--container">
-                <defs></defs>
-                <g
-                  class="ep-circle"
-                  style="
-                    transition-timing-function: ease-in-out;
-                    transform: rotate(-90deg);
-                  "
-                >
-                  <circle
-                    r="15.2"
-                    cx="16"
-                    cy="16"
-                    stroke="#617F8D"
-                    stroke-dasharray=""
-                    fill="#06354C"
-                    stroke-width="1.6"
-                    class="ep-circle--empty"
-                    style="
-                      transition-duration: 1000ms;
-                      transition-timing-function: ease-in-out;
-                    "
-                  ></circle>
-                  <circle
-                    r="15.2"
-                    cx="16"
-                    cy="16"
-                    fill="transparent"
-                    stroke="#2AE6D8"
-                    stroke-width="1.6"
-                    stroke-linecap="round"
-                    stroke-dasharray="95.50441666912971"
-                    class="ep-circle--progress animation__default"
-                    :style="{ 'stroke-dashoffset': 96 - (96 / 9) * streak }"
-                    style="
-                      transition: all 1000ms ease-in-out 0s, opacity 0.3s 0s;
-                      transform-origin: 50% 50%;
-                      opacity: 1;
-                      --ep-circumference: 95.5044;
-                      --ep-negative-circumference: -95.5044;
-                      --ep-double-circumference: 191.009;
-                      --ep-stroke-offset: 84.8928;
-                      --ep-loop-stroke-offset: -106.116;
-                      --ep-bounce-out-stroke-offset: 0;
-                      --ep-bounce-in-stroke-offset: 84.8928;
-                      --ep-reverse-stroke-offset: 275.902;
-                      --ep-loading-stroke-offset: 19.1009;
-                      animation-duration: 1000ms;
-                    "
-                  ></circle>
-                </g>
-              </g>
-            </svg>
-          </div>
-          <div class="ep-legend--container" style="max-width: 32px">
-            <div class="ep-legend--value">
-              <span class="ep-legend--value__counter">
-                <span>11.11111111111111</span> </span
-              ><span class="streak-value"
-                >x<span>{{ streak }}</span></span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-      <canvas id="canvas-fire"></canvas>
-      <svg id="svg-fire" xmlns="http://www.w3.org/2000/svg" version="1.1">
-        <filter id="goo">
-          <feGaussianBlur
-            in="SourceGraphic"
-            stdDeviation="7"
-            result="blur"
-          ></feGaussianBlur>
-          <feColorMatrix
-            in="blur"
-            mode="matrix"
-            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 60 -9"
-          ></feColorMatrix>
-        </filter>
-      </svg>
-    </div>
     <div class="vx-row m-0 wrapper">
       <div :class="['vx-col w-full relative trans']" id="left-content">
         <div class="h-full">
@@ -1242,11 +1150,7 @@ const stockChart = {
     // margin: 0,
     // defaultSeriesType: 'areaspline',
 
-    events: {
-      // load(event) {
-      // event.target.reflow();
-      // }
-    },
+    events: {},
   },
   rangeSelector: {
     enabled: false,
@@ -2365,8 +2269,6 @@ export default {
 
     formatPrice(value, minimum) {
       var formatter = new Intl.NumberFormat("en-US", {
-        //style: 'currency',
-        //currency: '',
         minimumFractionDigits: minimum,
       });
       let val = Number(value).toFixed(0);
@@ -2649,11 +2551,10 @@ export default {
     },
 
     getDataDefaultGet(get) {
-      let data = get;
+      let data = get[0];
       (ohlcStock = []), (volumeStock = []);
 
       var begin = 0;
-
       for (var i = begin; i < data.length; i++) {
         var _o = {
           x: data[i].date, // the date
@@ -2673,6 +2574,7 @@ export default {
       }
       stockChart.series[0].data = ohlcStock;
       stockChart.series[1].data = volumeStock;
+      console.log(stockChart);
       this.chartOptionsStock = stockChart;
 
       let ao = setInterval(() => {

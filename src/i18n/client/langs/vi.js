@@ -74,5 +74,16 @@ export default {
     22: 'Đã gửi email xác nhận',
     23: 'Địa chỉ email không hợp lệ. Vui lòng thử lại.',
     24: 'Mật khẩu của bạn ít nhất phải 6 đến 20 ký tự.'
+  },
+  trade: {
+    1: 'Nạp',
+    2: 'Cài Đặt',
+    3: 'Ngôn ngữ',
+    4: 'Âm thanh',
+    5: 'Off',
+    6: 'On',
+    7: 'Hồ Sơ',
+    8: 'Change Avatar',
+    9: 'Thông tin cá nhân'
   }
 };

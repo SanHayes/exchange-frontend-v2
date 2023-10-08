@@ -31,7 +31,7 @@
         "
       >
         <span class="nowrap">
-          {{ isMobile ? "Nạp" : "Nạp nhanh" }}
+          {{$t('trade.1')}}
         </span>
       </vs-button>
     </div>
@@ -56,10 +56,10 @@
           ></path>
         </g>
       </svg>
-      <span>Cài Đặt</span>
+      <span>{{$t('trade.2')}}</span>
       <vs-popup
         class="setting"
-        title="Cài Đặt"
+        :title="$t('trade.2')"
         :active.sync="popupActiveCaiDat"
       >
         <div class="wrap flex flex-col relative">
@@ -145,7 +145,7 @@
                   ></circle>
                 </g>
               </svg>
-              <span class="white">Ngôn ngữ</span>
+              <span class="white">{{$t('trade.3')}}</span>
             </div>
             <div class="control flex-1 flex align-center">
               <i18n />
@@ -179,18 +179,18 @@
                   </g>
                 </g>
               </svg>
-              <span class="white">Âm thanh</span>
+              <span class="white">{{$t('trade.4')}}</span>
             </div>
             <div class="control flex-1 flex align-center">
               <div class="toggleButtonWrapper flex">
-                <span class="white uppercase">Off</span>
+                <span class="white uppercase">{{$t('trade.5')}}</span>
                 <vs-switch
                   color="success"
                   style="border: 1px solid #4e4e4e; min-width: 60px"
                   v-model="switchAmThanh"
                   @change="OnOffSound"
                 />
-                <span class="white uppercase">On</span>
+                <span class="white uppercase">{{$t('trade.6')}}</span>
               </div>
             </div>
           </div>
@@ -251,8 +251,7 @@
           ></circle>
         </g>
       </svg>
-
-      <span>Hồ Sơ</span>
+      <span>{{$t('trade.7')}}</span>
     </div>
     <div class="con-img ml-3 mr-3 text-center relative cursor-pointer mTT">
       <notification-drop-down />
@@ -1034,11 +1033,6 @@ export default {
     toggleDataSidebar(val = false) {
       this.addNewDataSidebar = val;
     },
-
-    // logout() {
-    //   localStorage.removeItem("tokenUser");
-    //   this.$router.push("/login").catch(() => {});
-    // },
   },
   created() {
     let checkSound = localStorage.hasOwnProperty("SOUND");

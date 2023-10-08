@@ -23,7 +23,7 @@ export default {
   //
   //=========== USER
   loginUser(obj) {
-    return Api().post('login', obj);
+    return Api().post('api/login', obj);
   },
 
   getTokenActive(obj) {
@@ -282,7 +282,7 @@ export default {
   },
 
   loginAdmin(obj) {
-    return ApiAdminNew().post('login', obj);
+    return ApiAdminNew().post('api/login', obj);
   },
 
   checkEmail(email) {

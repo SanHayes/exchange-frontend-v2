@@ -316,9 +316,9 @@ import { swiper, swiperSlide } from "vue-awesome-swiper";
 import config from "@/config";
 import LogRegForGet from "@/pages/user/LogRegForGet";
 import I18n from "../trade/navbar/components/i18n.vue";
-
 export default {
   data() {
+console.log(config)
     return {
       swiperOption: {
         slidesPerView: 3,

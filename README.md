@@ -2,3 +2,6 @@
 内网面板地址: http://10.0.0.4:31653/9b6a532a
 username: uixyda1d
 password: f6a6b4fc
+
+8467899999
+catchadmin

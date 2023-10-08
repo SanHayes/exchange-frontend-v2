@@ -21,8 +21,6 @@
         class="cursor-pointer"
       ></feather-icon>
     </div>
-    <!-- <vs-divider class="mb-0"></vs-divider> -->
-
     <VuePerfectScrollbar
       style="height: calc(var(--vh, 1vh) * 100 - 16px - 45px - 10px)"
       class="scroll-area--data-list-add-new"

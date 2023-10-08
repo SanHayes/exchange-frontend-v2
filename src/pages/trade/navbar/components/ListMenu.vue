@@ -287,7 +287,7 @@
               </g>
             </svg>
           </span>
-          <span class="textLink">{{ $t("Logout") || "Logout" }}</span>
+          <span class="textLink">{{ $t("Logout") }}</span>
         </a>
       </div>
     </div>
@@ -545,10 +545,12 @@ export default {
     logOut() {
       localStorage.removeItem("tokenUser");
       localStorage.removeItem("INFO");
-      // xóa notice = 0
       getData.Notify = 0;
       localStorage.removeItem("stateOpen");
       this.$router.push('/login');
+      setTimeout(() => {
+        location.reload();
+      },500)
     },
 
     viewHoSo() {
